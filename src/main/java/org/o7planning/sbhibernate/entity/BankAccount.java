@@ -3,17 +3,25 @@ package org.o7planning.sbhibernate.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
  
 @Entity
 @Table(name = "Bank_Account")
 public class BankAccount {
  
-    @Id
-    @GeneratedValue
-    @Column(name = "id", nullable = false)
-    private Long id;
+//    @Id
+//    @GeneratedValue
+//    @Column(name = "id", nullable = false)
+//    private Long id;
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO,generator="native")
+	@GenericGenerator(name = "native",strategy = "native")
+	private Long id;
  
     @Column(name = "Full_Name", length = 128, nullable = false)
     private String fullName;
